@@ -1,0 +1,26 @@
+# Static site, no build step.
+[build]
+  publish = "."
+  command = ""
+
+# Editing tooling must not be published. Static hosts serve every uploaded file, and _source/
+# is the pre-rebrand master (old brand name, old contact details, someone else's Calendly).
+[build.processing]
+  skip_processing = true
+
+[[headers]]
+  for = "/_source/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[redirects]]
+  from = "/_source/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/tools/*"
+  to = "/404.html"
+  status = 404
+  force = true

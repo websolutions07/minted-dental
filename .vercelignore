@@ -1,0 +1,8 @@
+# Editing tooling — never publish. Static hosts serve whatever you upload, and _source/
+# is the pre-rebrand master (old brand name, old contact details, someone else's Calendly).
+_source/
+tools/
+*.ps1
+brand.config.json
+CLAUDE.md
+README-TEMPLATE.md

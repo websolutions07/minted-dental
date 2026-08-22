@@ -1,0 +1,86 @@
+{
+  "_readme": "Edit THIS file, then run Build-Site.ps1 . Every build regenerates all pages from the pristine _source folder, so it is always safe to re-run.",
+
+  "brand": {
+    "name": "Minted Dental",
+    "shortName": "Minted",
+    "tagline": "Modern, Gentle Dentistry",
+    "description": "Minted Dental is a modern dental clinic offering gentle, expert care - from preventive checkups and cosmetic dentistry to restorative treatments and orthodontics. Book your visit today.",
+    "_siteUrlNote": "Your live URL, no trailing slash. Open Graph requires ABSOLUTE image URLs - with a relative path, Facebook/LinkedIn/WhatsApp/X render the link preview with no image at all. Leave blank until you know the domain; the build will warn.",
+    "siteUrl": "https://minteddental.com",
+    "copyrightYear": "2026",
+    "credit": "RapidXAI",
+    "creditUrl": "https://rapidxai.com"
+  },
+
+  "contact": {
+    "_note": "phoneDisplay is the readable text on the page. phoneTel is what every tel: link dials. This is the Desert Ridge line. Scottsdale's (480) 697-4997 is set per-location on the about page location cards.",
+    "phoneDisplay": "(480) 400-1794",
+    "phoneTel": "+14804001794",
+    "email": "hello@minteddental.com",
+    "emailSecondary": "smile@minteddental.com",
+    "clinics": [
+      { "name": "Desert Ridge", "address": "21050 N Tatum Blvd #200, Phoenix, AZ 85050", "phoneDisplay": "(480) 400-1794", "phoneTel": "+14804001794", "email": "hello@minteddental.com" },
+      { "name": "Scottsdale", "address": "8776 E Shea Blvd Ste 107, Scottsdale, AZ 85260", "phoneDisplay": "(480) 697-4997", "phoneTel": "+14806974997", "email": "smile@minteddental.com" }
+    ]
+  },
+
+  "booking": {
+    "_note": "Booking runs through Flexbook. Set url to a tel: link instead if you want the CTAs to dial the clinic.",
+    "url": "https://flexbook.me/minted",
+    "buttonText": "Schedule Appointment"
+  },
+
+  "careers": {
+    "_note": "Where the 'Apply Now' buttons on about.html go. Deliberately separate from booking so job applicants do not land on appointment scheduling.",
+    "url": "mailto:hello@minteddental.com?subject=Careers%20enquiry"
+  },
+
+  "social": {
+    "_note": "Real profiles from minteddental.com. Set a value to \"\" to strip that network's icons entirely rather than link to a bare homepage. Minted Dental has no public X/Twitter account, so twitter is empty.",
+    "facebook": "https://www.facebook.com/minteddental",
+    "instagram": "https://www.instagram.com/minteddental",
+    "twitter": ""
+  },
+
+  "assets": {
+    "_note": "generateLogo:true draws a wordmark from brand.shortName. Set false to use your own files below. logoStyle 'badge' sizes a square/circular logo correctly in the nav and footer; use 'wordmark' for a wide horizontal logo.",
+    "generateLogo": false,
+    "logoStyle": "badge",
+    "logo": "assets/img/brand-badge.png",
+    "logoDark": "assets/img/brand-badge.png",
+    "favicon": "assets/img/brand-badge.png",
+    "webclip": "assets/img/brand-badge.png"
+  },
+
+  "theme": {
+    "_note": "primary is the main accent. dark is the deep background/footer. accent is used for highlighted words on dark sections.",
+    "primary": "#398a6a",
+    "primaryHover": "#2d6f55",
+    "primaryMuted": "#6f9a86",
+    "dark": "#0d2b21",
+    "darkAlt": "#123a2c",
+    "darker": "#08201a",
+    "accent": "#9ed9bb"
+  },
+
+  "themeVariantBlue": {
+    "_note": "Optional second palette used only by the variant-blue/ copy. Delete this whole block to make variant-blue inherit the main theme.",
+    "primary": "#2f80ff",
+    "primaryHover": "#1f6fe5",
+    "primaryMuted": "#5b76a8",
+    "dark": "#06182e",
+    "darkAlt": "#0b2a55",
+    "darker": "#07203f",
+    "accent": "#6aa8ff"
+  },
+
+  "text": {
+    "_note": "Replace any on-page copy. Left side = the exact text currently in the site, right side = your text.",
+    "Trusted Dental Care for Every Generation": "Trusted Dental Care for Every Generation"
+  },
+
+  "build": {
+    "includeVariantBlue": true
+  }
+}

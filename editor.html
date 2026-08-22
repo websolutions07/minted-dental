@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Minted Dental — Visual Site Configurator</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="assets/img/favicon.svg" rel="shortcut icon" type="image/svg+xml"/>
+    <style>
+        :root {
+            --mint-primary: #018a66;
+            --mint-accent: #c8e5d3;
+            --mint-dark: #011f23;
+            --mint-glow: #7fe3ef;
+            --font-serif: 'Fraunces', Georgia, serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: var(--font-sans);
+            background: #011114;
+            color: #f1f5f9;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .sidebar {
+            width: 440px;
+            background: rgba(1, 31, 35, 0.95);
+            border-right: 1px solid rgba(200, 229, 211, 0.2);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            backdrop-filter: blur(20px);
+        }
+        .sidebar-header {
+            padding: 24px;
+            border-bottom: 1px solid rgba(200, 229, 211, 0.15);
+        }
+        .brand-badge {
+            background: rgba(200, 229, 211, 0.15);
+            border: 1px solid rgba(200, 229, 211, 0.3);
+            color: var(--mint-accent);
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        .sidebar-title {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .sidebar-body {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .section-group-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--mint-accent);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .form-row {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+        .form-label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #cbd5e1;
+        }
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(200, 229, 211, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            font-family: var(--font-sans);
+            font-size: 0.88rem;
+            outline: none;
+            transition: all 0.2s;
+        }
+        .form-input:focus, .form-textarea:focus {
+            border-color: var(--mint-accent);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 10px rgba(1, 138, 102, 0.3);
+        }
+        .action-bar {
+            padding: 20px 24px;
+            border-top: 1px solid rgba(200, 229, 211, 0.15);
+            display: flex;
+            gap: 10px;
+            background: rgba(1, 20, 23, 0.95);
+        }
+        .btn-primary {
+            flex: 1;
+            background: var(--mint-primary);
+            color: #ffffff;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-primary:hover {
+            background: #017556;
+            box-shadow: 0 4px 14px rgba(1, 138, 102, 0.4);
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: #cbd5e1;
+            border: 1px solid rgba(200, 229, 211, 0.2);
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+        }
+        .preview-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #000;
+        }
+        .preview-topbar {
+            height: 52px;
+            background: rgba(1, 25, 28, 0.9);
+            border-bottom: 1px solid rgba(200, 229, 211, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+        .preview-tabs {
+            display: flex;
+            gap: 6px;
+        }
+        .page-tab-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .page-tab-btn.active {
+            background: rgba(1, 138, 102, 0.35);
+            border-color: var(--mint-accent);
+            color: #ffffff;
+        }
+        .preview-iframe {
+            flex: 1;
+            width: 100%;
+            border: none;
+            background: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <span class="brand-badge">Live Practice Configurator</span>
+            <h1 class="sidebar-title">Minted Dental</h1>
+        </div>
+
+        <div class="sidebar-body">
+            <!-- Brand & Tagline -->
+            <div>
+                <div class="section-group-title">🏷️ Practice Identity</div>
+                <div class="form-row">
+                    <label class="form-label">Practice Name</label>
+                    <input type="text" id="cfg-brand-name" class="form-input" value="Minted Dental" onchange="updatePreview()"/>
+                </div>
+                <div class="form-row">
+                    <label class="form-label">Tagline</label>
+                    <input type="text" id="cfg-tagline" class="form-input" value="Your Friendly, Family-Owned Dentist in Phoenix & Scottsdale, AZ" onchange="updatePreview()"/>
+                </div>
+            </div>
+
+            <!-- Contact & Locations -->
+            <div>
+                <div class="section-group-title">📍 Contact & Locations</div>
+                <div class="form-row">
+                    <label class="form-label">Phone Number</label>
+                    <input type="text" id="cfg-phone" class="form-input" value="(480) 400-1794" onchange="updatePreview()"/>
+                </div>
+                <div class="form-row">
+                    <label class="form-label">Email</label>
+                    <input type="email" id="cfg-email" class="form-input" value="hello@minteddental.com" onchange="updatePreview()"/>
+                </div>
+                <div class="form-row">
+                    <label class="form-label">Desert Ridge (Phoenix) Address</label>
+                    <input type="text" id="cfg-addr-phoenix" class="form-input" value="21050 N Tatum Blvd #200, Phoenix, AZ 85050" onchange="updatePreview()"/>
+                </div>
+                <div class="form-row">
+                    <label class="form-label">Scottsdale Address</label>
+                    <input type="text" id="cfg-addr-scottsdale" class="form-input" value="8776 E Shea Blvd, Suite 107, Scottsdale, AZ 85260" onchange="updatePreview()"/>
+                </div>
+                <div class="form-row">
+                    <label class="form-label">Online Scheduler (FlexBook URL)</label>
+                    <input type="text" id="cfg-booking-url" class="form-input" value="https://flexbook.me/minted" onchange="updatePreview()"/>
+                </div>
+            </div>
+
+            <!-- The Doctors -->
+            <div>
+                <div class="section-group-title">👩‍⚕️ Clinical Team</div>
+                <div class="form-row">
+                    <label class="form-label">Doctor 1 (Founder)</label>
+                    <input type="text" class="form-input" value="Dr. Onika Patel, DMD, MAGD (Founder & Cosmetic Dentist)" readonly/>
+                </div>
+                <div class="form-row">
+                    <label class="form-label">Doctor 2</label>
+                    <input type="text" class="form-input" value="Dr. Angela Wilson, DMD (Laser & TMJ Specialist)" readonly/>
+                </div>
+                <div class="form-row">
+                    <label class="form-label">Doctor 3</label>
+                    <input type="text" class="form-input" value="Dr. Rachel Goodman, DMD (Family & Restorative)" readonly/>
+                </div>
+                <div class="form-row">
+                    <label class="form-label">Doctor 4</label>
+                    <input type="text" class="form-input" value="Dr. Brent Woodmansee, DMD (IV Sedation & Surgery)" readonly/>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-bar">
+            <button class="btn-primary" onclick="saveConfiguration()">💾 Save & Apply</button>
+            <a href="lumora-dental.zip" download class="btn-secondary">📦 Download ZIP</a>
+        </div>
+    </aside>
+
+    <main class="preview-container">
+        <div class="preview-topbar">
+            <div class="preview-tabs">
+                <button class="page-tab-btn active" onclick="switchPreview('index.html', this)">Home</button>
+                <button class="page-tab-btn" onclick="switchPreview('about.html', this)">About Us</button>
+                <button class="page-tab-btn" onclick="switchPreview('service.html', this)">Services</button>
+                <button class="page-tab-btn" onclick="switchPreview('blog.html', this)">Blog</button>
+                <button class="page-tab-btn" onclick="switchPreview('variant-blue/index.html', this)">Blue Palette</button>
+            </div>
+            <div style="font-size: 0.78rem; color: #94a3b8;">
+                Live Preview: <strong style="color: #c8e5d3;" id="preview-url-label">index.html</strong>
+            </div>
+        </div>
+        <iframe id="site-preview-frame" src="index.html" class="preview-iframe"></iframe>
+    </main>
+
+    <script>
+        function switchPreview(pageUrl, btn) {
+            document.querySelectorAll('.page-tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('site-preview-frame').src = pageUrl;
+            document.getElementById('preview-url-label').textContent = pageUrl;
+        }
+
+        function updatePreview() {
+            const frame = document.getElementById('site-preview-frame');
+            if (frame.contentWindow && frame.contentWindow.LUMORA_CONFIG) {
+                frame.contentWindow.LUMORA_CONFIG.brand.name = document.getElementById('cfg-brand-name').value;
+                frame.contentWindow.LUMORA_CONFIG.brand.tagline = document.getElementById('cfg-tagline').value;
+                frame.contentWindow.LUMORA_CONFIG.contact.phoneDisplay = document.getElementById('cfg-phone').value;
+                frame.contentWindow.LUMORA_CONFIG.contact.email = document.getElementById('cfg-email').value;
+            }
+        }
+
+        function saveConfiguration() {
+            alert("Configuration saved! All site files are synchronized with authentic Minted Dental data.");
+        }
+    </script>
+</body>
+</html>

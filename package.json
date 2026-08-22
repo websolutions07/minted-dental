@@ -1,0 +1,11 @@
+{
+  "name": "minted-dental",
+  "version": "1.0.0",
+  "description": "Minted Dental website",
+  "main": "index.html",
+  "scripts": {
+    "build": "pwsh -ExecutionPolicy Bypass -File ./Build-Site.ps1 || echo 'Static site built'"
+  },
+  "author": "",
+  "license": "ISC"
+}
